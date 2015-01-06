@@ -1,6 +1,6 @@
-# mprofile(python ver.)
+# Python port of mprofile(MySQL profiler)
 
-This is a port of mprofile(perl ver.).
+This is a port of mprofile(written in perl).
 
 Original repo is here: https://github.com/kazuho/mprofile
 
@@ -31,6 +31,12 @@ First, take a dump file. This script runs 'SHOW FULL PROCESSLIST' periodically.
 Then, replace variable parameters by 'mpfilter' command. And collect the result by mpreport command.
 
     % mpfilter < mpdump.txt | mpreport | head -100
+
+For more details, here is a kazuho-san's article(In Japanese): http://developer.cybozu.co.jp/archives/kazuho/2009/07/mysql-539d.html
+
+## MOTIVATION
+
+I don't want to install DBI/DBD::mysql and dependent modules for the server.
 
 ## LICENSE
 
