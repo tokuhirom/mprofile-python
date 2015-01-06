@@ -12,10 +12,10 @@ interval = 0.1
 samples = 1000
 
 db = MySQLdb.connect(
-    host='localhost',
+#   host='localhost',
     user='root',
     passwd='',
-    db=''
+    read_default_file="/etc/my.cnf"
 )
 for i in range(samples):
     cur = db.cursor(MySQLdb.cursors.DictCursor)
