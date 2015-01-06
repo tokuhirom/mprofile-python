@@ -38,6 +38,16 @@ For more details, here is a kazuho-san's article(In Japanese): http://developer.
 
 I don't want to install DBI/DBD::mysql and dependent modules for the server.
 
+## FAQ
+
+### How do I install these scripts to servers, that protected by firewall?
+
+Clone this repo and run following command on your OSX machine.
+
+    > shar mp* | pbcopy
+
+Then, paste it on the terminal, that connected to remote server.
+
 ## LICENSE
 
 Python version's copyright notice is here:
