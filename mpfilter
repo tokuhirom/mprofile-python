@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+# Python 2.7+ required.
+
+# Replace parameters
+
+import json
+import fileinput
+import re
+
+for line in fileinput.input():
+    rows = json.loads(line)
+    for row in rows:
+        if not row['Info']:
+            pass
+        info = row['Info']
+        info = re.sub(r'''(?<=\W)-?(?:0x[0-9a-f]+|[0-9\.]+)|'.*?[^'\\]'|".*?[^\\]"''',
+                '?',
+                info,
+                flags=re.IGNORECASE)
+        info = re.sub(r'''(\s+IN\s+)\([\?,\s]+\)''',
+                r'\1(...)',
+                info,
+                flags=re.IGNORECASE)
+        info = re.sub(r'''(\s+VALUES\s+)[\(\)\?\,\s]+''',
+                r'\1...',
+                info,
+                flags=re.IGNORECASE)
+        row['Info'] = info
+    print json.dumps(rows)
+
