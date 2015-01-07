@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-# Supports Python 2.7+
-
 import MySQLdb
 import json
 import time

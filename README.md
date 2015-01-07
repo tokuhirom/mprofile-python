@@ -6,7 +6,7 @@ Original repo is here: https://github.com/kazuho/mprofile
 
 ## DEPENDENCIES
 
-  * Python 2.7+
+  * Python 2.6+(json module)
   * MySQL-python
 
 ## INSTALL
