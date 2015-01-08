@@ -1,30 +1,30 @@
-#!/usr/bin/env python
-
+# -*- coding: utf-8 -*-
 import MySQLdb
 import json
 import time
 
 # interval between samples
-interval = 0.1
+INTERVAL = 0.1
 # number of samples to take
-samples = 1000
+SAMPLES = 1000
 
-db = MySQLdb.connect(
-#   host='localhost',
-    user='root',
-    passwd='',
-    read_default_file="/etc/my.cnf"
-)
-for i in range(samples):
-    cur = db.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute("SHOW FULL PROCESSLIST")
-    rows = [ row
-         for row in cur.fetchall()
-          if row['Info'] != 'SHOW FULL PROCESSLIST'
-             and row['Command']=='Query']
-    print json.dumps(rows)
-    time.sleep(interval)
+def main():
+    db = MySQLdb.connect(
+        # host='localhost',
+        user='root',
+        passwd='',
+        read_default_file="/etc/my.cnf"
+    )
+    for i in range(SAMPLES):
+        cur = db.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute("SHOW FULL PROCESSLIST")
+        rows = [
+            row for row in cur.fetchall()
+            if (row['Info'] != 'SHOW FULL PROCESSLIST'
+                and row['Command'] == 'Query')
+        ]
+        print json.dumps(rows)
+        time.sleep(INTERVAL)
 
-# Installation:
-#   pip install MySQL-python
-
+if __name__ == '__main__':
+    main()
