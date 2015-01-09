@@ -17,7 +17,7 @@ On CentOS:
 
 Other systems:
 
-    % sudo pip install MySQL-python
+    % sudo pip install --user git+git://github.com/tokuhirom/mprofile-python.git
 
 ## SYNOPSIS
 
