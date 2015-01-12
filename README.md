@@ -17,12 +17,32 @@ On CentOS:
 
 Other systems:
 
-    % sudo pip install --user git+git://github.com/tokuhirom/mprofile-python.git
+    % pip install --user git+git://github.com/tokuhirom/mprofile-python.git
 
 ## SYNOPSIS
 
 By default, mpdump script connect to localhost database by root user without password.
-If you to modify the connection options, you need to edit the script.
+Following options are available.
+
+```
+usage: mpdump [-h] [--host HOST] [--interval INTERVAL] [--mycnf MYCNF]
+              [--password PASSWORD] [--port PORT] [--user USER]
+              [--socket SOCKET] [--samples SAMPLES] [-v]
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --host HOST          address of MySQL server
+  --interval INTERVAL  interval between samples (default: 0.1sec)
+  --mycnf MYCNF        MySQL config file path (default: /etc/my.cnf)
+  --password PASSWORD  MySQL password (default: no password)
+  --port PORT          port no. of MySQL server (default: 3306)
+  --user USER          MySQL username (default: root)
+  --socket SOCKET      unix socket of MySQL server (by default, connects to
+                       the server specified in my.cnf)
+  --samples SAMPLES    number of samples to take (default: 1000, infinite if
+                       set to 0)
+  -v, --verbose        set verbose mode (loglevel=DEBUG)
+```
 
 First, take a dump file. This script runs 'SHOW FULL PROCESSLIST' periodically.
 
