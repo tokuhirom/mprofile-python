@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
+import sys
 from setuptools import setup
 
 
 REQUIRES = [
     'MySQL-python',
 ]
+
+if sys.version_info < (2, 7):
+    REQUIRES.append('argparse')
 
 setup(
     name='mprofile',
